@@ -5,7 +5,8 @@ require 'sinatra'
 set :public_folder, Proc.new { File.join(root, "public") }
 
 get '/' do
-  haml :index, :format => :html5
+  #haml :index, :format => :html5
+  erb :index
 end
 
 get '/admin' do
@@ -19,17 +20,6 @@ end
 connections = []
 notifications = []
 
-post '/push' do
-  puts params
-  # Add the timestamp to the notification
-  notification = params.merge( {'timestamp' => timestamp }).to_json
-
-  notifications << notification
-
-  notifications.shift if notifications.length > 10
-  connections.each { |out| out << "data: #{notification}\n\n"}
-end
-
 get '/connect', provides: 'text/event-stream' do
   stream :keep_open do |out|
     connections << out
@@ -40,5 +30,16 @@ get '/connect', provides: 'text/event-stream' do
       connections.delete(out)
     }
   end
+end
+
+post '/push' do
+  puts params
+  # Add the timestamp to the notification
+  notification = params.merge( {'timestamp' => timestamp }).to_json
+
+  notifications << notification
+
+  notifications.shift if notifications.length > 10
+  connections.each { |out| out << "data: #{notification}\n\n"}
 end
 

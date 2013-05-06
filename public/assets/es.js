@@ -10,7 +10,7 @@ $(function() {
     var msg = $.parseJSON(event.data);
     $("#container").notify("create", "basic-template", {
       title: msg.timestamp,
-      text: msg.notification
+      text: msg.message
     });
   }
 })

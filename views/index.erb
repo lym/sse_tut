@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class=\"ie6\" lang=\"en\"> <![endif]-->
+<!--[if IE 7 ]> <html class=\"ie7\" lang=\"en\"> <![endif]-->
+<!--[if IE 8 ]> <html class=\"ie8\" lang=\"en\"> <![endif]-->
+<!--[if IE 9 ]> <html class=\"ie9\" lang=\"en\"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]> <!--> <html lang=\"en\"> <![endif]-->
+<head>
+  <meta charset='utf-8'>
+  <title>HTML5 Hacks - Server Sent Events</title>
+  <script src='assets/jquery.min.js' type='text/javascript'></script>
+  <script src='assets/jquery-ui.js' type='text/javascript'></script>
+  <script src='assets/jquery.notify.js' type='text/javascript'></script>
+  <script src='assets/es.js' type='text/javascript'></script>
+  <link href='style.css' rel='stylesheet' type='text/css'>
+  <link href='assets/ui.notify.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id='container' style='display:none'>
+    <div id='basic-template'>
+      <a class='ui-notify-cross ui-notify-close' href='#'>x</a>
+      <h1>#{title}</h1>
+      <p>#{text}</p>
+    </div>
+  </div>
+</body>
+<div id='wrapper'>
+  <p> Waiting for push notificatons..... </p>
+</div>
+
